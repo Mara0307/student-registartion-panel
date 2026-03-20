@@ -16,7 +16,7 @@ export default function EditStudentPage() {
   if (!student) {
     return (
       <main className="min-h-screen flex items-center justify-center p-6">
-        <div className="rounded-2xl bg-white p-8 shadow">
+        <div className="rounded-2xl bg-[var(--card-bg)] p-8 shadow">
           <h1 className="text-2xl font-bold mb-4">Student not found</h1>
           <Link href="/students" className="text-blue-600 underline">
             Back to Students
@@ -50,9 +50,9 @@ export default function EditStudentPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 p-4 md:p-8">
-      <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow">
-        <h1 className="mb-6 text-3xl font-bold text-black">Edit Student</h1>
+    <main className="min-h-screen bg-[var(--page-bg)] p-4 md:p-8">
+      <div className="mx-auto max-w-4xl rounded-2xl bg-[var(--card-bg)] p-8 shadow">
+        <h1 className="mb-6 text-3xl font-bold text-[var(--card-fg)]">Edit Student</h1>
         <StudentForm
           initialValues={student}
           onSubmit={handleUpdate}

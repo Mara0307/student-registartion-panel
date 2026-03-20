@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { Student } from "../../types/student";
-import { StudentFormValues, validateStudentForm } from "../../lib/validation";
+import {
+  StudentFormErrors,
+  StudentFormValues,
+  validateStudentForm,
+} from "../../lib/validation";
 
 interface StudentFormProps {
   initialValues?: Student;
@@ -29,7 +33,7 @@ export default function StudentForm({
     address: initialValues?.address || "",
   });
 
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<StudentFormErrors>({});
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -52,7 +56,10 @@ export default function StudentForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2 text-black">
+    <form
+      onSubmit={handleSubmit}
+      className="grid grid-cols-1 gap-4 md:grid-cols-2 text-[var(--card-fg)]"
+    >
       <div>
         <label className="mb-1 block font-medium">First Name</label>
         <input
@@ -183,7 +190,7 @@ export default function StudentForm({
       <div className="md:col-span-2">
         <button
           type="submit"
-          className="rounded-xl bg-black px-6 py-3 text-white"
+          className="rounded-xl bg-[var(--button-bg)] px-6 py-3 text-[var(--button-fg)]"
         >
           {submitLabel}
         </button>

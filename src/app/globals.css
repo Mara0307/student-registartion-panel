@@ -3,6 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --page-bg: #f3f4f6;
+  --page-fg: #171717;
+  --card-bg: #ffffff;
+  --card-fg: #171717;
+  --muted-fg: #4b5563;
+  --border-color: #d1d5db;
+  --button-bg: #000000;
+  --button-fg: #ffffff;
+  --input-bg: #ffffff;
+  --input-fg: #171717;
+  --input-border: #d1d5db;
 }
 
 @theme inline {
@@ -16,19 +27,78 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --page-bg: #0a0a0a;
+    --page-fg: #ededed;
+    --card-bg: #111111;
+    --card-fg: #ededed;
+    --muted-fg: #9ca3af;
+    --border-color: #374151;
+    --button-bg: #0f0f0f;
+    --button-fg: #ffffff;
+    --input-bg: #0f0f0f;
+    --input-fg: #ededed;
+    --input-border: #374151;
   }
 }
 
+html[data-theme="light"] {
+  --background: #ffffff;
+  --foreground: #171717;
+  --page-bg: #f3f4f6;
+  --page-fg: #171717;
+  --card-bg: #ffffff;
+  --card-fg: #171717;
+  --muted-fg: #4b5563;
+  --border-color: #d1d5db;
+  --button-bg: #000000;
+  --button-fg: #ffffff;
+  --input-bg: #ffffff;
+  --input-fg: #171717;
+  --input-border: #d1d5db;
+}
+
+html[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --page-bg: #0a0a0a;
+  --page-fg: #ededed;
+  --card-bg: #111111;
+  --card-fg: #ededed;
+  --muted-fg: #9ca3af;
+  --border-color: #374151;
+  --button-bg: #0f0f0f;
+  --button-fg: #ffffff;
+  --input-bg: #0f0f0f;
+  --input-fg: #ededed;
+  --input-border: #374151;
+}
+
+html {
+  color-scheme: light dark;
+}
+
 body {
-  background: var(--background);
+  background: var(--page-bg);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .text-black {
-  color: black;
+  color: var(--card-fg);
 }
 
 .table-body {
-  color: black;
+  color: var(--card-fg);
+}
+
+input,
+select,
+textarea {
+  background: var(--input-bg);
+  color: var(--input-fg);
+  border-color: var(--input-border);
+}
+
+input::placeholder {
+  color: var(--muted-fg);
 }

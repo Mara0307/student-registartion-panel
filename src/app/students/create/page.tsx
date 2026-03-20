@@ -33,9 +33,9 @@ export default function CreateStudentPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 p-4 md:p-8">
-      <div className="mx-auto max-w-4xl rounded-2xl bg-white p-8 shadow">
-        <h1 className="mb-6 text-3xl font-bold text-black">Create Student</h1>
+    <main className="min-h-screen bg-[var(--page-bg)] p-4 md:p-8">
+      <div className="mx-auto max-w-4xl rounded-2xl bg-[var(--card-bg)] p-8 shadow">
+        <h1 className="mb-6 text-3xl font-bold text-[var(--card-fg)]">Create Student</h1>
         <StudentForm onSubmit={handleCreate} submitLabel="Create Student" />
       </div>
     </main>

@@ -51,32 +51,32 @@ export default function StudentsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 p-4 md:p-8">
+    <main className="min-h-screen bg-[var(--page-bg)] p-4 md:p-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <h1 className="text-3xl font-bold text-black">Students</h1>
+          <h1 className="text-3xl font-bold text-[var(--card-fg)]">Students</h1>
 
           <Link
             href="/students/create"
-            className="rounded-xl bg-black px-5 py-2.5 text-white hover:opacity-90"
+            className="rounded-xl bg-[var(--button-bg)] px-5 py-2.5 text-[var(--button-fg)] hover:opacity-90"
           >
             Add Student
           </Link>
         </div>
 
-        <div className="mb-6 text-black grid grid-cols-1 gap-4 rounded-2xl bg-white p-4 shadow md:grid-cols-2 lg:grid-cols-5">
+        <div className="mb-6 text-[var(--card-fg)] grid grid-cols-1 gap-4 rounded-2xl bg-[var(--card-bg)] p-4 shadow md:grid-cols-2 lg:grid-cols-5">
           <input
             type="text"
             placeholder="Search by name or FIN"
             value={search}
             onChange={(e) => handleFilterChange(setSearch, e.target.value)}
-            className="rounded-xl border p-3 outline-none"
+            className="rounded-xl border border-[var(--input-border)] bg-[var(--input-bg)] p-3 text-[var(--input-fg)] outline-none"
           />
 
           <select
             value={faculty}
             onChange={(e) => handleFilterChange(setFaculty, e.target.value)}
-            className="rounded-xl border p-3"
+            className="rounded-xl border border-[var(--input-border)] bg-[var(--input-bg)] p-3 text-[var(--input-fg)]"
           >
             <option value="">All Faculties</option>
             {faculties.map((item) => (
@@ -89,7 +89,7 @@ export default function StudentsPage() {
           <select
             value={status}
             onChange={(e) => handleFilterChange(setStatus, e.target.value)}
-            className="rounded-xl border p-3"
+            className="rounded-xl border border-[var(--input-border)] bg-[var(--input-bg)] p-3 text-[var(--input-fg)]"
           >
             <option value="">All Statuses</option>
             {statuses.map((item) => (
@@ -102,7 +102,7 @@ export default function StudentsPage() {
           <select
             value={educationLevel}
             onChange={(e) => handleFilterChange(setEducationLevel, e.target.value)}
-            className="rounded-xl border p-3"
+            className="rounded-xl border border-[var(--input-border)] bg-[var(--input-bg)] p-3 text-[var(--input-fg)]"
           >
             <option value="">All Education Levels</option>
             {educationLevels.map((item) => (
@@ -115,7 +115,7 @@ export default function StudentsPage() {
           <select
             value={admissionYear}
             onChange={(e) => handleFilterChange(setAdmissionYear, e.target.value)}
-            className="rounded-xl border p-3"
+            className="rounded-xl border border-[var(--input-border)] bg-[var(--input-bg)] p-3 text-[var(--input-fg)]"
           >
             <option value="">All Years</option>
             {admissionYears.map((item) => (
@@ -126,9 +126,9 @@ export default function StudentsPage() {
           </select>
         </div>
 
-        <div className="overflow-x-auto rounded-2xl bg-white shadow">
+        <div className="overflow-x-auto rounded-2xl bg-[var(--card-bg)] shadow">
           <table className="min-w-full text-sm">
-            <thead className="bg-white-200 text-left text-black">
+            <thead className="bg-[var(--page-bg)] text-left text-[var(--card-fg)]">
               <tr>
                 <th className="p-4">ID</th>
                 <th className="p-4">First Name</th>
@@ -146,7 +146,10 @@ export default function StudentsPage() {
             <tbody className="table-body">
               {paginatedStudents.length > 0 ? (
                 paginatedStudents.map((student) => (
-                  <tr key={student.id} className="border-t">
+                  <tr
+                    key={student.id}
+                    className="border-t border-[var(--border-color)]"
+                  >
                     <td className="p-4">{student.id}</td>
                     <td className="p-4">{student.firstName}</td>
                     <td className="p-4">{student.lastName}</td>
@@ -182,7 +185,7 @@ export default function StudentsPage() {
                 ))
               ) : (
                 <tr>
-                  <td className="p-6 text-center text-gray-500" colSpan={10}>
+                  <td className="p-6 text-center text-[var(--muted-fg)]" colSpan={10}>
                     No students found
                   </td>
                 </tr>
@@ -195,7 +198,7 @@ export default function StudentsPage() {
           <button
             disabled={currentPage === 1}
             onClick={() => setCurrentPage((prev) => prev - 1)}
-            className="rounded-lg border px-4 py-2 disabled:opacity-50 bg-black"
+            className="rounded-lg border border-[var(--border-color)] px-4 py-2 disabled:opacity-50 bg-[var(--button-bg)] text-[var(--button-fg)]"
           >
             Previous
           </button>
@@ -204,8 +207,10 @@ export default function StudentsPage() {
             <button
               key={page}
               onClick={() => setCurrentPage(page)}
-              className={`rounded-lg px-4 py-2 border ${
-                currentPage === page ? "bg-black text-white" : "bg-white text-black"
+              className={`rounded-lg px-4 py-2 border border-[var(--border-color)] ${
+                currentPage === page
+                  ? "bg-[var(--button-bg)] text-[var(--button-fg)]"
+                  : "bg-[var(--card-bg)] text-[var(--card-fg)]"
               }`}
             >
               {page}
@@ -215,7 +220,7 @@ export default function StudentsPage() {
           <button
             disabled={currentPage === totalPages || totalPages === 0}
             onClick={() => setCurrentPage((prev) => prev + 1)}
-            className="rounded-lg border px-4 py-2 disabled:opacity-50 bg-black"
+            className="rounded-lg border border-[var(--border-color)] px-4 py-2 disabled:opacity-50 bg-[var(--button-bg)] text-[var(--button-fg)]"
           >
             Next
           </button>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { StudentProvider } from "./context/StudentContext";
+import ThemeToggle from "./components/theme/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Student Registration Management Panel",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ThemeToggle />
         <StudentProvider>{children}</StudentProvider>
       </body>
     </html>

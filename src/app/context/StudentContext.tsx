@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import data from "../data/students.json";
 import { Student } from "../types/student";
 
@@ -17,17 +17,12 @@ const StudentContext = createContext<StudentContextType | undefined>(undefined);
 const STORAGE_KEY = "students_data";
 
 export function StudentProvider({ children }: { children: React.ReactNode }) {
-  const [students, setStudents] = useState<Student[]>([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-
-    if (stored) {
-      setStudents(JSON.parse(stored) as Student[]);
-    } else {
-      setStudents(data as Student[]);
-    }
-  }, []);
+  const [students, setStudents] = useState<Student[]>(() => {
+    if (typeof window === "undefined") return data as Student[];
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (stored) return JSON.parse(stored) as Student[];
+    return data as Student[];
+  });
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(students));
@@ -53,16 +48,13 @@ export function StudentProvider({ children }: { children: React.ReactNode }) {
     return students.find((student) => student.id === id);
   };
 
-  const value = useMemo(
-    () => ({
-      students,
-      addStudent,
-      updateStudent,
-      deleteStudent,
-      getStudentById,
-    }),
-    [students]
-  );
+  const value = {
+    students,
+    addStudent,
+    updateStudent,
+    deleteStudent,
+    getStudentById,
+  };
 
   return (
     <StudentContext.Provider value={value}>
