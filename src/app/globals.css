@@ -102,3 +102,8 @@ textarea {
 input::placeholder {
   color: var(--muted-fg);
 }
+
+.required-star {
+  color: red;
+  margin-left: 4px;
+}

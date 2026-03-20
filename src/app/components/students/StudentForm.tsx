@@ -14,6 +14,19 @@ interface StudentFormProps {
   submitLabel: string;
 }
 
+const Label = ({
+  children,
+  required = false,
+}: {
+  children: React.ReactNode;
+  required?: boolean;
+}) => (
+  <label className="mb-1 block font-medium">
+    {children}
+    {required && <span className="required-star">*</span>}
+  </label>
+);
+
 export default function StudentForm({
   initialValues,
   onSubmit,
@@ -61,7 +74,7 @@ export default function StudentForm({
       className="grid grid-cols-1 gap-4 md:grid-cols-2 text-[var(--card-fg)]"
     >
       <div>
-        <label className="mb-1 block font-medium">First Name</label>
+        <Label required>First Name</Label>
         <input
           name="firstName"
           value={values.firstName}
@@ -72,7 +85,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Last Name</label>
+        <Label required>Last Name</Label>
         <input
           name="lastName"
           value={values.lastName}
@@ -83,7 +96,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">FIN</label>
+        <Label required>FIN</Label>
         <input
           name="fin"
           value={values.fin}
@@ -94,7 +107,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Faculty</label>
+        <Label>Faculty</Label>
         <input
           name="faculty"
           value={values.faculty}
@@ -104,7 +117,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Major</label>
+        <Label>Major</Label>
         <input
           name="major"
           value={values.major}
@@ -114,7 +127,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Education Level</label>
+        <Label>Education Level</Label>
         <select
           name="educationLevel"
           value={values.educationLevel}
@@ -129,7 +142,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Admission Year</label>
+        <Label required>Admission Year</Label>
         <input
           name="admissionYear"
           value={values.admissionYear}
@@ -142,7 +155,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Status</label>
+        <Label>Status</Label>
         <select
           name="status"
           value={values.status}
@@ -157,7 +170,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Email</label>
+        <Label>Email</Label>
         <input
           name="email"
           value={values.email}
@@ -168,7 +181,7 @@ export default function StudentForm({
       </div>
 
       <div>
-        <label className="mb-1 block font-medium">Phone</label>
+        <Label>Phone</Label>
         <input
           name="phone"
           value={values.phone}
@@ -178,7 +191,7 @@ export default function StudentForm({
       </div>
 
       <div className="md:col-span-2">
-        <label className="mb-1 block font-medium">Address</label>
+        <Label>Address</Label>
         <input
           name="address"
           value={values.address}
