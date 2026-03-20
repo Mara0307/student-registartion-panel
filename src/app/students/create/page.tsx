@@ -8,11 +8,19 @@ import { toast } from "react-toastify";
 
 export default function CreateStudentPage() {
   const router = useRouter();
-  const { addStudent } = useStudents();
+  const { students, addStudent } = useStudents();
 
   const handleCreate = (values: StudentFormValues) => {
+    const nextId =
+      (
+        students.reduce((max, student) => {
+          const numericId = Number(student.id);
+          return Number.isFinite(numericId) ? Math.max(max, numericId) : max;
+        }, 0) + 1
+      ).toString();
+
     addStudent({
-      id: Date.now().toString(),
+      id: nextId,
       firstName: values.firstName,
       lastName: values.lastName,
       fin: values.fin,
