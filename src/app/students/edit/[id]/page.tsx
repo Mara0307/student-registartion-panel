@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import StudentForm from "../../../components/students/StudentForm";
 import { useStudents } from "../../../context/StudentContext";
 import { StudentFormValues } from "../../../lib/validation";
+import { toast } from "react-toastify";
 
 export default function EditStudentPage() {
   const params = useParams();
@@ -46,7 +47,13 @@ export default function EditStudentPage() {
       address: values.address,
     });
 
-    router.push(`/students/${student.id}`);
+    toast.success("Student updated successfully!");
+
+    setTimeout(() => {
+      router.push(`/students/${student.id}`);
+    }, 1200);
+
+    
   };
 
   return (

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useStudents } from "../context/StudentContext";
 import { filterStudents, paginateStudents } from "../lib/helpers";
+import { toast } from "react-toastify";
 
 const STUDENTS_PER_PAGE = 5;
 
@@ -42,6 +43,7 @@ export default function StudentsPage() {
     const confirmed = window.confirm("Are you sure you want to delete this student?");
     if (confirmed) {
       deleteStudent(id);
+      toast.success("Student deleted successfully!");
     }
   };
 

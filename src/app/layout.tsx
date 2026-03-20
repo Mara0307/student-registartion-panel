@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
+
 import { StudentProvider } from "./context/StudentContext";
 import ThemeToggle from "./components/theme/ThemeToggle";
+import { ToastContainer } from "react-toastify";
 
 export const metadata: Metadata = {
   title: "Student Registration Management Panel",
@@ -16,8 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeToggle />
-        <StudentProvider>{children}</StudentProvider>
+        <StudentProvider>
+          <ThemeToggle />
+          {children}
+          <ToastContainer position="top-right" autoClose={2000} theme="light" />
+        </StudentProvider>
       </body>
     </html>
   );

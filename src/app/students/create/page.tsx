@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import StudentForm from "../../components/students/StudentForm";
 import { useStudents } from "../../context/StudentContext";
 import { StudentFormValues } from "../../lib/validation";
+import { toast } from "react-toastify";
 
 export default function CreateStudentPage() {
   const router = useRouter();
@@ -28,8 +29,12 @@ export default function CreateStudentPage() {
       phone: values.phone,
       address: values.address,
     });
-
-    router.push("/students");
+  
+    toast.success("Student created successfully!");
+  
+    setTimeout(() => {
+      router.push("/students");
+    }, 1200);
   };
 
   return (
