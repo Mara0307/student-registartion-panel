@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Student Registration Management Panel
 
-## Getting Started
+A simple and interactive **Student Management System** built with **Next.js, React, and TypeScript**.
+This application allows users to manage student records with features such as search, filtering, pagination, and CRUD operations.
 
-First, run the development server:
+---
+
+##  Features
+
+*  View list of students in a table
+*  Add new student
+*  Edit existing student
+*  Search by name or FIN
+*  Filter by:
+
+  * Faculty
+  * Status
+  * Education level
+  * Admission year
+*  Pagination support
+*  Student detail page
+*  Delete student with confirmation
+*  Form validation with error messages
+*  Toast notifications (React Toastify)
+*  Theme support (light/dark mode)
+*  Data persistence using `localStorage`
+
+---
+
+## Technologies Used
+
+* **Next.js (App Router)**
+* **React**
+* **TypeScript**
+* **CSS**
+* **React Toastify**
+
+---
+
+##  Project Structure
+
+```
+src/
+  app/
+    students/
+      page.tsx
+      create/page.tsx
+      edit/[id]/page.tsx
+      [id]/page.tsx
+
+  components/
+    students/
+      StudentForm.tsx
+
+  context/
+    StudentContext.tsx
+
+  data/
+    students.json
+
+  lib/
+    helpers.ts
+    validation.ts
+
+  types/
+    student.ts
+```
+
+---
+
+##  Installation & Running
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Mara0307/student-registartion-panel.git
+cd student-registration-panel
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. Open in browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+##  Key Concepts Implemented
 
-To learn more about Next.js, take a look at the following resources:
+* React state management using **Context API**
+* Dynamic routing with Next.js (`[id]`)
+* Form validation and error handling
+* Data filtering and pagination logic
+* Reusable components
+* Clean and maintainable code structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##  Bonus Features
 
-## Deploy on Vercel
+* Toast notifications for user actions
+* Dark mode support
+* Persistent data using `localStorage`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+##  Notes
+
+* No external API is used — all data is handled locally
+* JSON/TS data is used as the data source
+* UI is designed to be simple, responsive, and user-friendly
+
+---
+
+##  Author
+
+Developed as part of a frontend assignment using modern React and Next.js practices.
+
+---
