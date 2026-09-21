@@ -15,7 +15,6 @@
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
-    "@tailwindcss/oxide-win32-x64-msvc": "^4.2.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
